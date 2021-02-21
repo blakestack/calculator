@@ -10,10 +10,44 @@ function addButtonsToPage() {
 addButtonsToPage();
 
 //add numbers and symbols to buttons
-const buttonsDiv = document.querySelector('.calculatorButtons');
-const calcButtons = buttonsDiv.querySelectorAll('div');
-calcButtons.forEach((div) => {
-    div.textContent = 1;
-});
+function addNumbersAndSymbols() {
+  const buttonsDiv = document.querySelector(".calculatorButtons");
+  const calcButtons = buttonsDiv.querySelectorAll("div");
+  let i = 0;
+  calcButtons.forEach((div, i) => {
+    //stop putting numbers in after 9
+    if (i > 9) {
+      switch (i) {
+        case 10:
+          div.textContent = ".";
+          break;
+        case 11:
+          div.textContent = "=";
+          break;
+        case 12:
+          div.textContent = "+";
+          break;
+        case 13:
+          div.textContent = "-";
+          break;
+        case 14:
+          div.textContent = "x";
+          break;
+        case 15:
+          div.textContent = "/";
+          break;
+        case 16:
+          div.textContent = "+/-";
+          break;
+        case 17:
+          div.textContent = "AC";
+          break;
+      }
+    } else {
+      div.textContent = i;
+      i++;
+    }
+  });
+}
 
-
+addNumbersAndSymbols();
