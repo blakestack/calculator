@@ -1,5 +1,9 @@
 .calculatorBody{
-    display: grid;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    width: 100%;
     
 }
 

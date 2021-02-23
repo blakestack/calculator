@@ -51,3 +51,25 @@ function addNumbersAndSymbols() {
 }
 
 addNumbersAndSymbols();
+
+function addCalculatorScreen(){
+  const bodyDiv = document.querySelector('.calculatorBody');
+  const screenInput = document.createElement('input');
+  screenInput.setAttribute('type', 'text');
+  bodyDiv.appendChild(screenInput);
+}
+
+addCalculatorScreen();
+
+function addFunctionalityToButtons(){
+  const calcButtons = document.querySelectorAll('.calculatorButtons');
+  calcButtons.forEach((div) => {
+    div.addEventListener('click', () => {
+      const divContent = div.textContent;
+      const calcScreen = document.querySelector('input');
+      calcScreen.setAttribute('value', `${divContent}`);
+    });//end of event listener
+  });//end of for each function
+}
+
+addFunctionalityToButtons();
