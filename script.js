@@ -3,6 +3,7 @@ function addButtonsToPage() {
   const buttonsDiv = document.querySelector(".calculatorButtons");
   for (let i = 0; i < 18; i++) {
     const newDiv = document.createElement("div");
+    newDiv.setAttribute("class", "calcBtn");
     buttonsDiv.appendChild(newDiv);
   }
 }
@@ -52,24 +53,24 @@ function addNumbersAndSymbols() {
 
 addNumbersAndSymbols();
 
-function addCalculatorScreen(){
-  const bodyDiv = document.querySelector('.calculatorBody');
-  const screenInput = document.createElement('input');
-  screenInput.setAttribute('type', 'text');
+function addCalculatorScreen() {
+  const bodyDiv = document.querySelector(".calculatorBody");
+  const screenInput = document.createElement("input");
+  screenInput.setAttribute("type", "text");
   bodyDiv.appendChild(screenInput);
 }
 
 addCalculatorScreen();
 
-function addFunctionalityToButtons(){
-  const calcButtons = document.querySelectorAll('.calculatorButtons');
+function addFunctionalityToButtons() {
+  const calcButtons = document.querySelectorAll(".calcBtn");
   calcButtons.forEach((div) => {
-    div.addEventListener('click', () => {
+    div.addEventListener("click", () => {
       const divContent = div.textContent;
-      const calcScreen = document.querySelector('input');
-      calcScreen.setAttribute('value', `${divContent}`);
-    });//end of event listener
-  });//end of for each function
+      const calcScreen = document.querySelector("input");
+      calcScreen.value = `${divContent}`;
+    }); //end of event listener
+  }); //end of for each function
 }
 
 addFunctionalityToButtons();
