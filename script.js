@@ -53,24 +53,37 @@ function addNumbersAndSymbols() {
 
 addNumbersAndSymbols();
 
+//add a html text input tag for the calculator screen
 function addCalculatorScreen() {
   const bodyDiv = document.querySelector(".calculatorBody");
   const screenInput = document.createElement("input");
   screenInput.setAttribute("type", "text");
+  screenInput.classList.add('calcScreen');
   bodyDiv.appendChild(screenInput);
 }
 
 addCalculatorScreen();
 
+//add functionality to add text to input tag when a button is clicked
 function addFunctionalityToButtons() {
   const calcButtons = document.querySelectorAll(".calcBtn");
   calcButtons.forEach((div) => {
-    div.addEventListener("click", () => {
-      const divContent = div.textContent;
-      const calcScreen = document.querySelector("input");
-      calcScreen.value = `${divContent}`;
-    }); //end of event listener
+    div.addEventListener("click", equationBuilder);
   }); //end of for each function
 }
 
 addFunctionalityToButtons();
+
+
+function equationBuilder(){
+    let divContent = this.textContent;
+    const calcScreen = document.querySelector("calcScreen");
+    calcScreen.value = `${divContent}`;
+    let equation = {};
+    equation.firstArg = calcScreen.value;
+    calcScreen.value = '';
+    equation.operator = calcScreen.value;
+    calcScreen.value = '';
+    equation.secondArg = calcScreen.value;
+    console.log(equation);
+}
