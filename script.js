@@ -1,3 +1,30 @@
+//functions for the calculator operations
+
+function add(arg1, arg2) {
+  return arg1 + arg2;
+}
+
+function subtract(arg1, arg2) {
+  return arg1 - arg2;
+}
+
+function sum(arg1) {
+  let sum = 0;
+  arg1.forEach((number) => {
+    sum += number;
+  });
+  return sum;
+}
+
+function multiply(arg1) {
+  let sum = 1;
+  arg1.forEach((number) => {
+    sum *= number;
+  });
+  return sum;
+}
+
+
 //add calulator divs to page
 function addButtonsToPage() {
   const buttonsDiv = document.querySelector(".calculatorButtons");
