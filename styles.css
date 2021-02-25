@@ -1,9 +1,9 @@
 .calculatorBody{
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    height: 100%;
-    width: 100%;
+    flex-direction: column-reverse;
+    height: 50%;
+    width: 50%;
     
 }
 

@@ -8,22 +8,32 @@ function subtract(arg1, arg2) {
   return arg1 - arg2;
 }
 
-function sum(arg1) {
-  let sum = 0;
-  arg1.forEach((number) => {
-    sum += number;
-  });
-  return sum;
+function divide(arg1, arg2) {
+  return arg1 / arg2;
 }
 
-function multiply(arg1) {
-  let sum = 1;
-  arg1.forEach((number) => {
-    sum *= number;
-  });
-  return sum;
+function multiply(arg1, arg2) {
+  return arg1 * arg2;
 }
 
+//function operate which takes an operator and 2 arguments
+
+function operate(operator, arg1, arg2){
+  switch (operator){
+    case "+":
+      add(arg1, arg2);
+      break;
+    case "-": 
+      subtract(arg1, arg2);
+      break;
+    case "*": 
+      multiply(arg1, arg2);
+      break;
+    case "/": 
+    divide(arg1, arg2);
+    break;
+  }
+}
 
 //add calulator divs to page
 function addButtonsToPage() {
@@ -85,7 +95,7 @@ function addCalculatorScreen() {
   const bodyDiv = document.querySelector(".calculatorBody");
   const screenInput = document.createElement("input");
   screenInput.setAttribute("type", "text");
-  screenInput.classList.add('calcScreen');
+  screenInput.classList.add("calcScreen");
   bodyDiv.appendChild(screenInput);
 }
 
@@ -95,22 +105,27 @@ addCalculatorScreen();
 function addFunctionalityToButtons() {
   const calcButtons = document.querySelectorAll(".calcBtn");
   calcButtons.forEach((div) => {
-    div.addEventListener("click", equationBuilder);
+    div.addEventListener("click", () => {
+      const divContent = div.textContent;
+      const calcScreen = document.querySelector(".calcScreen");
+      calcScreen.value = `${divContent}`;
+    }); //end of first event listener
+
+    div.addEventListener('click', equationBuilder);
   }); //end of for each function
 }
 
 addFunctionalityToButtons();
 
-
-function equationBuilder(){
-    let divContent = this.textContent;
-    const calcScreen = document.querySelector("calcScreen");
-    calcScreen.value = `${divContent}`;
-    let equation = {};
-    equation.firstArg = calcScreen.value;
-    calcScreen.value = '';
-    equation.operator = calcScreen.value;
-    calcScreen.value = '';
-    equation.secondArg = calcScreen.value;
-    console.log(equation);
+function equationBuilder() {
+  const calcScreen = document.querySelector(".calcScreen");
+  let equation = {};
+  equation.firstArg = calcScreen.value;
+  calcScreen.value = "";
+  equation.operator = calcScreen.value;
+  calcScreen.value = "";
+  equation.secondArg = calcScreen.value;
+  console.log(equation);
 }
+
+console.log(operate("-",4,3));
