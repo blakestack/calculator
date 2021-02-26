@@ -18,20 +18,20 @@ function multiply(arg1, arg2) {
 
 //function operate which takes an operator and 2 arguments
 
-function operate(operator, arg1, arg2){
-  switch (operator){
+function operate(operator, arg1, arg2) {
+  switch (operator) {
     case "+":
-      add(arg1, arg2);
+      return add(arg1, arg2);
       break;
-    case "-": 
-      subtract(arg1, arg2);
+    case "-":
+      return subtract(arg1, arg2);
       break;
-    case "*": 
-      multiply(arg1, arg2);
+    case "*":
+      return multiply(arg1, arg2);
       break;
-    case "/": 
-    divide(arg1, arg2);
-    break;
+    case "/":
+      return divide(arg1, arg2);
+      break;
   }
 }
 
@@ -93,9 +93,9 @@ addNumbersAndSymbols();
 //add a html text input tag for the calculator screen
 function addCalculatorScreen() {
   const bodyDiv = document.querySelector(".calculatorBody");
-  const screenInput = document.createElement("input");
-  screenInput.setAttribute("type", "text");
+  const screenInput = document.createElement("div");
   screenInput.classList.add("calcScreen");
+  console.log("hi");
   bodyDiv.appendChild(screenInput);
 }
 
@@ -108,10 +108,10 @@ function addFunctionalityToButtons() {
     div.addEventListener("click", () => {
       const divContent = div.textContent;
       const calcScreen = document.querySelector(".calcScreen");
-      calcScreen.value = `${divContent}`;
+      calcScreen.textContent = `${divContent}`;
     }); //end of first event listener
 
-    div.addEventListener('click', equationBuilder);
+    div.addEventListener("click", equationBuilder);
   }); //end of for each function
 }
 
@@ -127,5 +127,3 @@ function equationBuilder() {
   equation.secondArg = calcScreen.value;
   console.log(equation);
 }
-
-console.log(operate("-",4,3));

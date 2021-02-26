@@ -12,3 +12,10 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 }
+
+.calcScreen{
+    background-color: lightgray;
+    border: 1px solid black;
+    height: 50px;
+    width: 100%;
+}
