@@ -95,7 +95,6 @@ function addCalculatorScreen() {
   const bodyDiv = document.querySelector(".calculatorBody");
   const screenInput = document.createElement("div");
   screenInput.classList.add("calcScreen");
-  console.log("hi");
   bodyDiv.appendChild(screenInput);
 }
 
@@ -105,11 +104,7 @@ addCalculatorScreen();
 function addFunctionalityToButtons() {
   const calcButtons = document.querySelectorAll(".calcBtn");
   calcButtons.forEach((div) => {
-    div.addEventListener("click", () => {
-      const divContent = div.textContent;
-      const calcScreen = document.querySelector(".calcScreen");
-      calcScreen.textContent = `${divContent}`;
-    }); //end of first event listener
+    div.addEventListener("click", addTextToScreen); //end of first event listener
 
     div.addEventListener("click", equationBuilder);
   }); //end of for each function
@@ -117,13 +112,15 @@ function addFunctionalityToButtons() {
 
 addFunctionalityToButtons();
 
+function addTextToScreen() {
+  const divContent = this.textContent;
+  const calcScreen = document.querySelector(".calcScreen");
+  calcScreen.textContent = `${divContent}`;
+}
+
 function equationBuilder() {
   const calcScreen = document.querySelector(".calcScreen");
   let equation = {};
-  equation.firstArg = calcScreen.value;
-  calcScreen.value = "";
-  equation.operator = calcScreen.value;
-  calcScreen.value = "";
-  equation.secondArg = calcScreen.value;
+  equation.firstArg = calcScreen.textContent;
   console.log(equation);
 }
