@@ -104,9 +104,8 @@ addCalculatorScreen();
 function addFunctionalityToButtons() {
   const calcButtons = document.querySelectorAll(".calcBtn");
   calcButtons.forEach((div) => {
-    div.addEventListener("click", addTextToScreen); //end of first event listener
-
-    div.addEventListener("click", equationBuilder);
+      div.addEventListener("click", addTextToScreen); 
+      div.addEventListener("click", equationBuilder);
   }); //end of for each function
 }
 
