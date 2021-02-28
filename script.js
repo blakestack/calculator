@@ -103,10 +103,16 @@ addCalculatorScreen();
 //add functionality to add text to input tag when a button is clicked
 function addFunctionalityToButtons() {
   const calcButtons = document.querySelectorAll(".calcBtn");
-  calcButtons.forEach((div) => {
-      div.addEventListener("click", addTextToScreen); 
-      div.addEventListener("click", equationBuilder);
-  }); //end of for each function
+  const calcButtonsArray = Array.from(calcButtons);
+  const numberKeys = calcButtonsArray.filter(button => typeof parseInt(button.textContent) == 'number');
+  console.log(numberKeys);
+  numberKeys.forEach((number) => {
+    number.addEventListener("click", addTextToScreen);
+  });
+  //calcButtons.forEach((div) => {
+    //  div.addEventListener("click", addTextToScreen); 
+      //div.addEventListener("click", equationBuilder);
+  //}); //end of for each function
 }
 
 addFunctionalityToButtons();
