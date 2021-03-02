@@ -104,18 +104,22 @@ addCalculatorScreen();
 function addFunctionalityToButtons() {
   const calcButtons = document.querySelectorAll(".calcBtn");
   const calcButtonsArray = Array.from(calcButtons);
-  const numberKeys = calcButtonsArray.filter(button => button.textContent >= 0);
+  const numberKeys = calcButtonsArray.filter(
+    (button) => button.textContent >= 0
+  );
   console.log(numberKeys);
   numberKeys.forEach((number) => {
     number.addEventListener("click", addTextToScreen);
-  });//end of for each 
+  }); //end of for each
 
   calcButtonsArray.forEach((button) => {
-    switch(button.textContent){
-      case 'x': 
-      button.addEventListener('click', equationBuilder);
-      break;
-    }//end of switch statement
+    switch (button.textContent) {
+      case "x":
+        button.addEventListener("click", equationBuilder);
+        break;
+      case "=":
+        button.addEventListener('click', equationBuilder);
+    } //end of switch statement
   });
 }
 
