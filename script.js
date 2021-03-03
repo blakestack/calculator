@@ -110,15 +110,23 @@ function addFunctionalityToButtons() {
   console.log(numberKeys);
   numberKeys.forEach((number) => {
     number.addEventListener("click", addTextToScreen);
+    //number.addEventListener("click", equationBuilder);
   }); //end of for each
 
   calcButtonsArray.forEach((button) => {
     switch (button.textContent) {
-      case "x":
-        button.addEventListener("click", equationBuilder);
+      case "+":
+        button.addEventListener("click", additionButton);
         break;
       case "=":
-        button.addEventListener('click', equationBuilder);
+        button.addEventListener('click', () => {
+          let stack = additionButton();
+          const calcScreen = document.querySelector(".calcScreen");
+          let answer = operate(stack[1], stack[0], calcScreen.textContent);
+          calcScreen.textContent = answer;
+        });
+        //button.addEventListener('click', equationBuilder);
+        break;
     } //end of switch statement
   });
 }
@@ -134,6 +142,16 @@ function addTextToScreen() {
 function equationBuilder() {
   const calcScreen = document.querySelector(".calcScreen");
   let equation = {};
-  equation.firstArg = calcScreen.textContent;
-  console.log(equation);
+  equation.firstArg = [];
+  equation.firstArg.push(calcScreen.textContent);
+  console.log(equation.firstArg);
+}
+
+function additionButton(){
+  const calcScreen = document.querySelector(".calcScreen");
+  let stack = [];
+  stack.push(calcScreen.textContent);
+  stack.push("+");
+  return stack;
+
 }
