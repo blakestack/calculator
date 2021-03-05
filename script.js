@@ -176,19 +176,6 @@ function addTextToScreen() {
   calcScreen.textContent = `${divContent}`;
 }
 
-function equationBuilder() {
-  const calcScreen = document.querySelector(".calcScreen");
-  let equation = {};
-  equation.firstArg = [];
-  equation.firstArg.push(calcScreen.textContent);
-  console.log(equation.firstArg);
-}
-
-function additionButton(){
-  const calcScreen = document.querySelector(".calcScreen");
-  let stack = [];
-  stack.push(calcScreen.textContent);
-  stack.push("+");
-  return stack;
-
-}
+//make display value a global variable (array)
+//when keys are pressed add those inputs to the array
+//calculate the values that are stored in the array
