@@ -1,3 +1,9 @@
+//global variables 
+
+let firstNumber = '';
+let secondNumber = '';
+let operator = '';
+
 //functions for the calculator operations
 
 function add(arg1, arg2) {
@@ -40,7 +46,7 @@ function addButtonsToPage() {
   const buttonsDiv = document.querySelector(".calculatorButtons");
   for (let i = 0; i < 18; i++) {
     const newDiv = document.createElement("div");
-    newDiv.setAttribute("class", "calcBtn");
+    newDiv.classList.add("calcBtn");
     buttonsDiv.appendChild(newDiv);
   }
 }
@@ -61,18 +67,23 @@ function addNumbersAndSymbols() {
           break;
         case 11:
           div.textContent = "=";
+          div.classList.add('operators');
           break;
         case 12:
           div.textContent = "+";
+          div.classList.add('operators');
           break;
         case 13:
           div.textContent = "-";
+          div.classList.add('operators');
           break;
         case 14:
           div.textContent = "x";
+          div.classList.add('operators');
           break;
         case 15:
           div.textContent = "/";
+          div.classList.add('operators');
           break;
         case 16:
           div.textContent = "+/-";
@@ -102,21 +113,47 @@ addCalculatorScreen();
 
 //add functionality to add text to input tag when a button is clicked
 function addFunctionalityToButtons() {
+  const operators = document.querySelectorAll('.operators')
   const calcButtons = document.querySelectorAll(".calcBtn");
   const calcButtonsArray = Array.from(calcButtons);
   const numberKeys = calcButtonsArray.filter(
     (button) => button.textContent >= 0
-  );
+  );//returns an array with all the number buttons
   console.log(numberKeys);
+
   numberKeys.forEach((number) => {
     number.addEventListener("click", addTextToScreen);
-    //number.addEventListener("click", equationBuilder);
+    number.addEventListener("click", () => {
+      if(operator === ""){
+        firstNumber += number.textContent;
+        console.log(firstNumber);
+      }else {
+        secondNumber += number.textContent;
+      }
+    });
   }); //end of for each
 
-  calcButtonsArray.forEach((button) => {
+  operators.forEach((op) => {
+    op.addEventListener('click', () => {
+      if(op.textContent !== '='){
+        operator = op.textContent;
+      }else{
+        console.log(secondNumber);
+
+        switch(operator){
+          case '+': 
+          console.log(operate(operator, parseInt(firstNumber), parseInt(secondNumber)));
+          break;
+        }
+      }//end of if else 
+    });
+  });//end of for each
+  /*calcButtonsArray.forEach((button) => {
     switch (button.textContent) {
       case "+":
-        button.addEventListener("click", additionButton);
+        operator = button.textContent;
+        console.log(firstNumber);
+        console.log(operator);
         break;
       case "=":
         button.addEventListener('click', () => {
@@ -128,7 +165,7 @@ function addFunctionalityToButtons() {
         //button.addEventListener('click', equationBuilder);
         break;
     } //end of switch statement
-  });
+  });*/
 }
 
 addFunctionalityToButtons();
