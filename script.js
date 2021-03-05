@@ -122,7 +122,7 @@ function addFunctionalityToButtons() {
         button.addEventListener('click', () => {
           let stack = additionButton();
           const calcScreen = document.querySelector(".calcScreen");
-          let answer = operate(stack[1], stack[0], calcScreen.textContent);
+          let answer = operate(stack[1], parseInt(stack[0]), parseInt(calcScreen.textContent));
           calcScreen.textContent = answer;
         });
         //button.addEventListener('click', equationBuilder);
