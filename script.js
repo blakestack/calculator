@@ -4,6 +4,10 @@ let firstNumber = '';
 let secondNumber = '';
 let operator = '';
 
+const screen = document.querySelector('.calculatorScreen')
+let displayValue = '';
+let calculations = [];
+
 //functions for the calculator operations
 
 function add(arg1, arg2) {
@@ -40,76 +44,25 @@ function operate(operator, arg1, arg2) {
       break;
   }
 }
+let stack = [];
+function calculation(operator, arg1, arg2){
+  stack.push(operator);
+  stack.push(arg1);
+  stack.push(arg2);
 
-//add calulator divs to page
-function addButtonsToPage() {
-  const buttonsDiv = document.querySelector(".calculatorButtons");
-  for (let i = 0; i < 18; i++) {
-    const newDiv = document.createElement("div");
-    newDiv.classList.add("calcBtn");
-    buttonsDiv.appendChild(newDiv);
-  }
-}
+  
 
-addButtonsToPage();
+}//end of calculaiton
+function storeEquation(){
+  const buttons = document.querySelectorAll('.calcBtn');
+  buttons.forEach((button) => {
 
-//add numbers and symbols to buttons
-function addNumbersAndSymbols() {
-  const buttonsDiv = document.querySelector(".calculatorButtons");
-  const calcButtons = buttonsDiv.querySelectorAll("div");
-  let i = 0;
-  calcButtons.forEach((div, i) => {
-    //stop putting numbers in after 9
-    if (i > 9) {
-      switch (i) {
-        case 10:
-          div.textContent = ".";
-          break;
-        case 11:
-          div.textContent = "=";
-          div.classList.add('operators');
-          break;
-        case 12:
-          div.textContent = "+";
-          div.classList.add('operators');
-          break;
-        case 13:
-          div.textContent = "-";
-          div.classList.add('operators');
-          break;
-        case 14:
-          div.textContent = "x";
-          div.classList.add('operators');
-          break;
-        case 15:
-          div.textContent = "/";
-          div.classList.add('operators');
-          break;
-        case 16:
-          div.textContent = "+/-";
-          break;
-        case 17:
-          div.textContent = "AC";
-          break;
-      }
-    } else {
-      div.textContent = i;
-      i++;
-    }
   });
+
 }
 
-addNumbersAndSymbols();
 
-//add a html text input tag for the calculator screen
-function addCalculatorScreen() {
-  const bodyDiv = document.querySelector(".calculatorBody");
-  const screenInput = document.createElement("div");
-  screenInput.classList.add("calcScreen");
-  bodyDiv.appendChild(screenInput);
-}
 
-addCalculatorScreen();
 
 //add functionality to add text to input tag when a button is clicked
 function addFunctionalityToButtons() {
@@ -127,6 +80,7 @@ function addFunctionalityToButtons() {
       if(operator === ""){
         firstNumber += number.textContent;
         console.log(firstNumber);
+        calculations.push(firstNumber);
       }else {
         secondNumber += number.textContent;
       }
@@ -137,6 +91,7 @@ function addFunctionalityToButtons() {
     op.addEventListener('click', () => {
       if(op.textContent !== '='){
         operator = op.textContent;
+        //calculations.push(operator);
       }else{
         console.log(secondNumber);
 
