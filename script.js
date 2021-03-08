@@ -44,22 +44,39 @@ function operate(operator, arg1, arg2) {
       break;
   }
 }
-let stack = [];
-function calculation(operator, arg1, arg2){
-  stack.push(operator);
-  stack.push(arg1);
-  stack.push(arg2);
 
-  
-
-}//end of calculaiton
-function storeEquation(){
-  const buttons = document.querySelectorAll('.calcBtn');
-  buttons.forEach((button) => {
-
-  });
-
+let arr= []
+let equation = ""
+let currentVal = ""
+function calculate() {
+    arr.push(currentVal)
+    arr.forEach(element => equation += element + " ")
+    console.log(equation)
 }
+
+function addToArray(p1){
+    arr.push(currentVal)
+    arr.push(p1);
+    currentVal = ""
+    clearDisplay()
+}
+
+function addToCurrentVal(v){
+    currentVal += v
+    updateDisplay()
+}
+
+function updateDisplay(){
+    document.getElementById("calcScreen").innerHTML = currentVal
+}
+
+function clearDisplay()
+{
+    document.getElementById("calcScreen").innerHTML = ''
+}
+let stack = [];
+
+
 
 
 
