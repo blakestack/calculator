@@ -1,8 +1,7 @@
 //global variables 
-
-
-
-
+let arr= [];
+let equation = "";
+let currentValue = "";
 
 //functions for the calculator operations
 
@@ -41,109 +40,45 @@ function operate(operator, arg1, arg2) {
   }
 }
 
-let arr= []
-let equation = ""
-let currentVal = ""
+//JS for the calculator to work
+
 function calculate() {
-    arr.push(currentVal)
+    arr.push(currentValue)
     arr.forEach(element => equation += element + " ")
     console.log(equation)
 }
 
-function addToArray(p1){
-    arr.push(currentVal)
-    arr.push(p1);
-    currentVal = ""
-    clearDisplay()
+function addToArray(item){
+    arr.push(currentValue);
+    arr.push(item);
+    currentValue = "";
+    clearDisplay();
 }
 
-function addToCurrentVal(v){
-    currentVal += v
-    updateDisplay()
+function addToCurrentValue(value){
+    currentValue += value;
+    updateDisplay();
 }
 
 function updateDisplay(){
-    document.getElementById("calcScreen").innerHTML = currentVal
+    document.querySelector(".calcScreen").textContent = currentValue;
 }
 
-function clearDisplay()
-{
-    document.getElementById("calcScreen").innerHTML = ''
-}
-let stack = [];
-
-
-
-
-
-
-//add functionality to add text to input tag when a button is clicked
-function addFunctionalityToButtons() {
-  const operators = document.querySelectorAll('.operators')
-  const calcButtons = document.querySelectorAll(".calcBtn");
-  const calcButtonsArray = Array.from(calcButtons);
-  const numberKeys = calcButtonsArray.filter(
-    (button) => button.textContent >= 0
-  );//returns an array with all the number buttons
-  console.log(numberKeys);
-
-  numberKeys.forEach((number) => {
-    number.addEventListener("click", addTextToScreen);
-    number.addEventListener("click", () => {
-      if(operator === ""){
-        firstNumber += number.textContent;
-        console.log(firstNumber);
-        calculations.push(firstNumber);
-      }else {
-        secondNumber += number.textContent;
-      }
-    });
-  }); //end of for each
-
-  operators.forEach((op) => {
-    op.addEventListener('click', () => {
-      if(op.textContent !== '='){
-        operator = op.textContent;
-        //calculations.push(operator);
-      }else{
-        console.log(secondNumber);
-
-        switch(operator){
-          case '+': 
-          console.log(operate(operator, parseInt(firstNumber), parseInt(secondNumber)));
-          break;
-        }
-      }//end of if else 
-    });
-  });//end of for each
-  /*calcButtonsArray.forEach((button) => {
-    switch (button.textContent) {
-      case "+":
-        operator = button.textContent;
-        console.log(firstNumber);
-        console.log(operator);
-        break;
-      case "=":
-        button.addEventListener('click', () => {
-          let stack = additionButton();
-          const calcScreen = document.querySelector(".calcScreen");
-          let answer = operate(stack[1], parseInt(stack[0]), parseInt(calcScreen.textContent));
-          calcScreen.textContent = answer;
-        });
-        //button.addEventListener('click', equationBuilder);
-        break;
-    } //end of switch statement
-  });*/
+function clearDisplay(){
+    document.querySelector(".calcScreen").textContent = '';
 }
 
-addFunctionalityToButtons();
+//adding functionality to buttons
 
-function addTextToScreen() {
-  const divContent = this.textContent;
-  const calcScreen = document.querySelector(".calcScreen");
-  calcScreen.textContent = `${divContent}`;
-}
 
-//make display value a global variable (array)
-//when keys are pressed add those inputs to the array
-//calculate the values that are stored in the array
+const numberButtons = document.querySelectorAll(".numberBtn");
+
+numberButtons.forEach((number) => {
+  number.setAttribute('onclick', `addToCurrentValue(${number.textContent})`);
+});
+
+const operatorButtons = document.querySelectorAll(".operatorBtn");
+
+operatorButtons.forEach((operator) => {
+  operator.setAttribute('onclick', `addToArray('${operator.textContent}')`);
+});
