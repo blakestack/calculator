@@ -1,12 +1,8 @@
 //global variables 
 
-let firstNumber = '';
-let secondNumber = '';
-let operator = '';
 
-const screen = document.querySelector('.calculatorScreen')
-let displayValue = '';
-let calculations = [];
+
+
 
 //functions for the calculator operations
 
