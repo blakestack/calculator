@@ -43,20 +43,22 @@ function operate(operator, arg1, arg2) {
 //JS for the calculator to work
 
 function calculate() {
-  arr.forEach((element) => (equation += element + " "));
-  currentValue = operate(
+  //arr.forEach((element) => (equation += element + " "));
+  currentValue = '';
+  let answer  = operate(
     arr[1],
     parseInt(arr[0]),
     parseInt(arr[2])
   );
-  updateDisplay();
+  addToCurrentValue(answer);
+  arr = [];
+  arr.push(answer);
 }
 
 function addToArray(item) {
   //arr.push(currentValue);
   arr.push(item);
-  currentValue = item;
-  updateDisplay();
+  addToCurrentValue(item);
 }
 
 function addToCurrentValue(value) {
