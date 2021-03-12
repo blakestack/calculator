@@ -44,12 +44,8 @@ function operate(operator, arg1, arg2) {
 
 function calculate() {
   //arr.forEach((element) => (equation += element + " "));
-  currentValue = '';
-  let answer  = operate(
-    arr[1],
-    parseInt(arr[0]),
-    parseInt(arr[2])
-  );
+  currentValue = "";
+  let answer = operate(arr[1], parseInt(arr[0]), parseInt(arr[2]));
   addToCurrentValue(answer);
   arr = [];
   arr.push(answer);
@@ -74,6 +70,12 @@ function clearDisplay() {
   document.querySelector(".calcScreen").textContent = "";
 }
 
+function clearCalculator() {
+  clearDisplay();
+  arr = [];
+  currentValue = "";
+}
+
 //adding functionality to buttons
 
 const numberButtons = document.querySelectorAll(".numberBtn");
@@ -87,6 +89,8 @@ const operatorButtons = document.querySelectorAll(".operatorBtn");
 operatorButtons.forEach((operator) => {
   if (operator.textContent === "=") {
     operator.addEventListener("click", calculate);
+  } else if (operator.textContent === "AC") {
+    operator.addEventListener("click", clearCalculator);
   } else {
     operator.setAttribute("onclick", `addToArray('${operator.textContent}')`);
   }
