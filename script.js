@@ -51,10 +51,10 @@ function calculate() {
   arr.push(answer);
 }
 
-function addToArray(item) {
-  //arr.push(currentValue);
-  arr.push(item);
-  addToCurrentValue(item);
+function addToArray() {
+  arr.push(currentValue);
+  arr.push(this.textContent);
+  currentValue = '';
 }
 
 function addToCurrentValue(value) {
@@ -81,7 +81,7 @@ function clearCalculator() {
 const numberButtons = document.querySelectorAll(".numberBtn");
 
 numberButtons.forEach((number) => {
-  number.setAttribute("onclick", `addToArray(${number.textContent})`);
+  number.setAttribute("onclick", `addToCurrentValue(${number.textContent})`);
 });
 
 const operatorButtons = document.querySelectorAll(".operatorBtn");
@@ -92,6 +92,7 @@ operatorButtons.forEach((operator) => {
   } else if (operator.textContent === "AC") {
     operator.addEventListener("click", clearCalculator);
   } else {
-    operator.setAttribute("onclick", `addToArray('${operator.textContent}')`);
+    operator.setAttribute("onclick", `addToCurrentValue('${operator.textContent}')`);
+    operator.addEventListener('clock', addToArray);
   }
 });
