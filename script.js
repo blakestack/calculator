@@ -44,16 +44,16 @@ function operate(operator, arg1, arg2) {
 
 function calculate() {
   //arr.forEach((element) => (equation += element + " "));
-  currentValue = "";
+  arr.push(currentValue);
   let answer = operate(arr[1], parseInt(arr[0]), parseInt(arr[2]));
+  currentValue = '';
   addToCurrentValue(answer);
   arr = [];
-  arr.push(answer);
 }
 
-function addToArray() {
+function addToArray(item) {
   arr.push(currentValue);
-  arr.push(this.textContent);
+  arr.push(item);
   currentValue = '';
 }
 
@@ -92,7 +92,7 @@ operatorButtons.forEach((operator) => {
   } else if (operator.textContent === "AC") {
     operator.addEventListener("click", clearCalculator);
   } else {
-    operator.setAttribute("onclick", `addToCurrentValue('${operator.textContent}')`);
+    operator.setAttribute("onclick", `addToArray('${operator.textContent}')`);
     operator.addEventListener('clock', addToArray);
   }
 });
