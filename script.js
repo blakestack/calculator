@@ -14,6 +14,9 @@ function subtract(arg1, arg2) {
 }
 
 function divide(arg1, arg2) {
+  if (arg2 === 0) {
+    return "Can't Do That!";
+  }
   return arg1 / arg2;
 }
 
@@ -46,7 +49,7 @@ function calculate() {
   //arr.forEach((element) => (equation += element + " "));
   arr.push(currentValue);
   let answer = operate(arr[1], parseInt(arr[0]), parseInt(arr[2]));
-  currentValue = '';
+  currentValue = "";
   addToCurrentValue(answer);
   arr = [];
 }
@@ -54,7 +57,7 @@ function calculate() {
 function addToArray(item) {
   arr.push(currentValue);
   arr.push(item);
-  currentValue = '';
+  currentValue = "";
 }
 
 function addToCurrentValue(value) {
@@ -73,6 +76,8 @@ function clearDisplay() {
 function clearCalculator() {
   clearDisplay();
   arr = [];
+  currentValue = "0";
+  updateDisplay();
   currentValue = "";
 }
 
@@ -93,6 +98,6 @@ operatorButtons.forEach((operator) => {
     operator.addEventListener("click", clearCalculator);
   } else {
     operator.setAttribute("onclick", `addToArray('${operator.textContent}')`);
-    operator.addEventListener('clock', addToArray);
+    //operator.addEventListener('clock', addToArray);
   }
 });

@@ -1,35 +1,69 @@
-.container{
-    display: flex;
-    justify-content: center;
-    flex-direction: column-reverse;
-    height: 100%;
-    width: 100%;
-    
+.container {
+  position: relative;
+  width: 50%;
 }
 
-.calculatorButtons{
-    /*display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr; */
+.container:after {
+  display: block;
+  padding-bottom: 100%;
 }
 
-.calcScreen{
-    background-color: lightgray;
-    border: 1px solid black;
-    height: 50px;
-    width: 100%;
+.calculatorBody {
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 
-.calculatorButtons{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    border: 1px solid black;
-    
+.calcScreen {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  background-color: lightgray;
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 50px;
+  width: 100%;
 }
 
-.calcBtn{
-    border: 1px solid black;
-    border-radius: 2px;
-    padding: 10px;
+.numberBtn {
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.1em 0.1em 0;
+  border: 0.16em solid rgba(255, 255, 255, 0);
+  border-radius: 2em;
+  outline: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: black;
+  background-color: lightseagreen;
+  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.operatorBtn {
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.1em 0.1em 0;
+  border: 0.16em solid rgba(255, 255, 255, 0);
+  border-radius: 2em;
+  outline: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: black;
+  background-color: lightseagreen;
+  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.numberBtn:hover {
+  border-color: orange;
+}
+.operatorBtn:hover {
+  border-color: orange;
 }
