@@ -6,7 +6,7 @@ let currentValue = "";
 //functions for the calculator operations
 
 function add(arg1, arg2) {
-  return arg1 + arg2;
+  return parseFloat(arg1) + parseFloat(arg2);
 }
 
 function subtract(arg1, arg2) {
@@ -81,12 +81,24 @@ function clearCalculator() {
   currentValue = "";
 }
 
+
+function addDecimal(){
+  //let newNumber = "." + currentValue.slice(0, currentValue.length);
+  currentValue += ".";
+  updateDisplay();
+}
+
 //adding functionality to buttons
 
 const numberButtons = document.querySelectorAll(".numberBtn");
 
 numberButtons.forEach((number) => {
-  number.setAttribute("onclick", `addToCurrentValue(${number.textContent})`);
+  if(number.textContent === "."){
+    number.addEventListener('click', addDecimal);
+  }else{
+    number.setAttribute("onclick", `addToCurrentValue(${number.textContent})`);
+  }
+  
 });
 
 const operatorButtons = document.querySelectorAll(".operatorBtn");
