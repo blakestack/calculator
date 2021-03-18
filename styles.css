@@ -1,64 +1,64 @@
 .container {
-  position: relative;
-  width: 50%;
-}
-
-.container:after {
-  display: block;
-  padding-bottom: 100%;
+    display: flex;
+    min-height: 95vh;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    background-color: azure;
 }
 
 .calculatorBody {
-  position: absolute;
-  height: 100%;
-  width: 100%;
+    background-color: black;
+    border: 10px solid rgba(47,47,47,1);
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(100px, auto) repeat(5, 80px);
+    gap: 2px;
+} 
+
+.calculatorButtons{
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(100px, auto) repeat(5, 80px);
 }
 
 .calcScreen {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  background-color: lightgray;
-  border: 1px solid black;
-  border-radius: 5px;
-  height: 50px;
-  width: 100%;
+    grid-column: 1 / -1;
+    background-color: #b2b9b7;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding: 5px;
+    font-size: 5.5em;
+    font-weight: initial;
+    text-shadow: 1.3px 1.3px #383838;
+    margin: 5px;
 }
 
 .numberBtn {
-  display: inline-block;
-  padding: 0.3em 1.2em;
-  margin: 0 0.1em 0.1em 0;
-  border: 0.16em solid rgba(255, 255, 255, 0);
-  border-radius: 2em;
-  outline: none;
-  box-sizing: border-box;
-  text-decoration: none;
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  color: black;
-  background-color: lightseagreen;
-  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
-  text-align: center;
-  transition: all 0.2s;
+    margin: 1px;
+    border-radius: 5%;
+    border: none;
+    font-weight: initial;
+    font-size: 2em;
+    font-family: monospace;
+    color: black;
+    padding: 10px;
 }
 
 .operatorBtn {
-  display: inline-block;
-  padding: 0.3em 1.2em;
-  margin: 0 0.1em 0.1em 0;
-  border: 0.16em solid rgba(255, 255, 255, 0);
-  border-radius: 2em;
-  outline: none;
-  box-sizing: border-box;
-  text-decoration: none;
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  color: black;
-  background-color: lightseagreen;
-  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
-  text-align: center;
-  transition: all 0.2s;
+    margin: 1px;
+    border-radius: 5%;
+    border: none;
+    font-weight: initial;
+    font-size: 2em;
+    font-family: monospace;
+    color: black;
+    padding: 10px;
 }
 
 .numberBtn:hover {
@@ -66,4 +66,11 @@
 }
 .operatorBtn:hover {
   border-color: orange;
+}
+
+.title{
+    position: absolute;
+    top: 50px;
+    font-family: monospace;
+    font-size: 50px;
 }

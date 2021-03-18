@@ -1,6 +1,5 @@
 //global variables
 let arr = [];
-let equation = "";
 let currentValue = "";
 
 //functions for the calculator operations
