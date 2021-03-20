@@ -47,7 +47,8 @@ function operate(operator, arg1, arg2) {
 function calculate() {
   //arr.forEach((element) => (equation += element + " "));
   arr.push(currentValue);
-  let answer = operate(arr[1], parseFloat(arr[0]), parseFloat(arr[2]));
+  //call operate function on the values of the array. toFixed function rounds the decimal places 
+  let answer = operate(arr[1], parseFloat(arr[0]), parseFloat(arr[2])).toFixed(2);
   currentValue = "";
   addToCurrentValue(answer);
   arr = [];
