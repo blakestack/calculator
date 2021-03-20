@@ -81,8 +81,12 @@ function clearCalculator() {
 }
 
 function addDecimal() {
-  currentValue += ".";
-  updateDisplay();
+  if (currentValue.includes(".")) {
+    return;
+  } else {
+    currentValue += ".";
+    updateDisplay();
+  }
 }
 
 function addNegative() {
