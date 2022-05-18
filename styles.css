@@ -10,7 +10,7 @@
 }
 
 .calculatorBody {
-  background-color: black;
+  background-color: darkgreen;
   border: 10px solid rgba(47, 47, 47, 1);
   border-radius: 4px;
   
@@ -52,7 +52,7 @@
   font-family: monospace;
   color: black;
   padding: 10px;
-  background-color: lightseagreen;
+  background-color: red;
 }
 
 .operatorBtn {
@@ -64,7 +64,7 @@
   font-family: monospace;
   color: black;
   padding: 10px;
-  background-color: orange;
+  background-color: lightblue;
 }
 
 .numberBtn:hover {
